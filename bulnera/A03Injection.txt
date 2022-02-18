@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Embed PHP in a .html File</title>
+  </head>
+  <body>
+    <h1><?php echo "Hello World" ?></h1>
+  </body>
+</html>
+
+
+*******Primero convertimos nuestro codigo en texto plano a base 64
+el resultado en base 64 lo colocamos en data
+el token se muestra al momento de iniciar sesion o se encuentra en la base de datos
+en la opcion ext se coloca la extencion deseada, puede ser html, pyton o cualquier otra
+
+
+
+******Posteriormente ejecutamos la consulta en la webappi como se muestra a continuacion
+
+
+
+
+fetch('http://192.168.1.213/wapp/Imagen', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json, text/plain, /',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ "token": "b9f910b450342a66fd1379cbde96f4f38e50d4ccf4db3e7578bf1cc5ba18858d4da5adb7", "name": "index2",
+"data": "PCFET0NUWVBFIGh0bWw+DQo8aHRtbD4NCiAgPGhlYWQ+DQogICAgPHRpdGxlPkVtYmVkIFBIUCBpbiBhIC5odG1sIEZpbGU8L3RpdGxlPg0KICA8L2hlYWQ+DQogIDxib2R5Pg0KICAgIDxoMT48P3BocCBlY2hvICJIZWxsbyBXb3JsZCIgPz48L2gxPg0KICA8L2JvZHk+DQo8L2h0bWw+"
+,"ext": "html" })
+}).then(res => res.json())
+  .then(res => console.log(res));
+
+
+
+*****una vez realizado esto se a subido el archivo correctamente
