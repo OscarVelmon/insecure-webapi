@@ -1,0 +1,49 @@
+***Se creo un usuario y contraseña admin/admin
+
+
+fetch('http://192.168.1.213/wapp/Registro', {
+method: 'POST',
+headers: {
+'Accept': 'application/json, text/plain, /',
+'Content-Type': 'application/json'
+},
+body: JSON.stringify({"uname":"admin", "email": "","password": "admin"})
+}).then(res => res.json())
+.then(res => console.log(res));
+
+
+***Posteriormente accedimos y nos creó un token correctamente.
+
+fetch('http://192.168.1.213/wapp/Login', {
+method: 'POST',
+headers: {
+'Accept': 'application/json, text/plain, /',
+'Content-Type': 'application/json'
+},
+body: JSON.stringify({"uname":"admin", "password": "admin"})
+}).then(res => res.json())
+.then(res => console.log(res));
+
+
+*este nos genero un token de inicio de sesion correctamente
+
+
+********Despues revisamos la base de datos consultando un token de inicio de sesion antiguo
+	para subir una imagen y asi verificar que este token aun funcionara
+
+
+fetch('http://192.168.1.213/wapp/Login', {
+method: 'POST',
+headers: {
+'Accept': 'application/json, text/plain, /',
+'Content-Type': 'application/json'
+},
+body: JSON.stringify({"token" : "e77d5b603fd6d699f7237666ef12ca8249fb3c10bd74ecbe373ee5a4758f93b800b4f3e5"
+,"name": "texto","data":" ","ext" : ".txt"})
+}).then(res => res.json())
+.then(res => console.log(res));
+
+
+
+
+
